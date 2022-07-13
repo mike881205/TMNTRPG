@@ -4,10 +4,10 @@ import Battlefield from "../BattleField";
 import CharacterInfo from "../CharacterInfo";
 import './style.css'
 
-const BattleStage = ({ characters, addToParty, party, changeGameState, updateActiveChar }) => {
+const BattleStage = ({ characters, addToparty, partys, changeGameState, updateActiveChar }) => {
 
     const activeCharacter = () => {
-        const filtered = party.filter(C => { return C.selected });
+        const filtered = partys.hero.filter(C => { return C.selected });
         return filtered[0];
     };
 
@@ -15,7 +15,7 @@ const BattleStage = ({ characters, addToParty, party, changeGameState, updateAct
         <Container>
             <Battlefield
                 updateActiveChar={updateActiveChar}
-                party={party}
+                partys={partys}
             />
             {
                 !activeCharacter() ?

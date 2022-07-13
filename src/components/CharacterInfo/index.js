@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { React } from "react";
+import { Row, Col } from "react-bootstrap";
 import CharacterImg from "../CharacterImg";
 // import './style.css'
 
@@ -86,8 +86,8 @@ const CharacterInfo = ({ character }) => {
                 <Row>
                     <Col >
                         <CharacterImg
-                            image={img}
-                            name={name}
+                            image={img()}
+                            classId={'infoImg'}
                         />
                     </Col>
                 </Row>

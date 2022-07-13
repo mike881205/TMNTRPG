@@ -1,11 +1,12 @@
-import { React, useState, useEffect } from "react";
-import { Row, Col, Button } from "react-bootstrap";
-// import './style.css'
+import { React } from "react";
+import './style.css'
 
-const CharacterImg = ({ img, name }) => {
+const CharacterImg = ({ image, classId }) => {
+
+    const {name, source} = image
 
     return (
-        <img style={{border: '1px solid black'}} src={img} alt={`${name}_img`}></img>
+        <img id={classId} style={{border: '1px solid black'}} src={source} alt={name}></img>
     )
 };
 

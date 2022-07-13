@@ -8,21 +8,27 @@ const App = () => {
 
   const [gameState, setGameState] = useState("character_select");
   const [characters, setCharacters] = useState(null);
-  const [party, setParty] = useState(null);
+  const [partys, setpartys] = useState(null);
   const [inventory, setInventory] = useState(null);
 
   const addToParty = id => {
-    const P = [...party];
-    const character = {...characters[id]};
-    const newCharArr = characters.filter((C, i) => {
-      return i !== id;
-    });
+    const prtys = {...partys};
+    const P = prtys.hero;
+    const Characters = {...characters};
+    const hero = Characters.heroes[id];
 
-    if (P.length === 0) character.selected = true;
-    P.push(character);
+    Characters.heroes.forEach(H => P.push(H))
 
-    setCharacters(newCharArr);
-    setParty(P);
+    // if (P.length === 0) hero.selected = true;
+
+    // P.push(hero);
+
+    // Characters.heroes = Characters.heroes.filter((C, i) => {
+    //   return i !== id;
+    // });
+
+    // setCharacters(Characters);
+    setpartys(prtys);
   };
 
   const changeGameState = game_state => {
@@ -31,21 +37,30 @@ const App = () => {
 
   const updateActiveChar = id => {
 
-    const P = [...party];
+    const prtys = {...partys};
+    const P = prtys.hero;
 
     P.forEach(C => {
       if (C.id === id) C.selected = true
       else C.selected = false;
     });
 
-    setParty(P)
+    setpartys(prtys);
   };
 
   useEffect(() => {
+
     const characterArr = CharactersArr();
-    characterArr.forEach((C, i) => { C.id = i });
-    setCharacters(characterArr);
-    setParty([]);
+    
+    characterArr.forEach((C, i) => C.id = i);
+
+    const heroes = characterArr.filter(C => { return C.type === 'hero' });
+    const enemies = characterArr.filter(C => { return C.type.includes('enemy') });
+    const bosess = characterArr.filter(C => { return C.type === 'boss' });
+    const chars = {heroes: heroes, enemies: enemies, bosess: bosess};
+
+    setCharacters(chars);
+    setpartys({hero: [], enemy: []});
   }, [])
 
   return (
@@ -56,7 +71,7 @@ const App = () => {
           :
           gameState === 'character_select' && characters ?
             <CharacterSelect
-              characters={characters}
+              characters={characters.heroes}
               addToParty={addToParty}
               changeGameState={changeGameState}
             />
@@ -64,7 +79,7 @@ const App = () => {
             gameState === 'battle' ?
               <BattleStage
                 characters={characters}
-                party={party}
+                partys={partys}
                 addToParty={addToParty}
                 changeGameState={changeGameState}
                 updateActiveChar={updateActiveChar}
