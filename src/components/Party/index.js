@@ -3,24 +3,24 @@ import { Row } from "react-bootstrap";
 import CharacterTile from "../CharacterTiles";
 // import './style.css'
 
-const EnemyParty = ({ party, updateActiveChar }) => {
+const Party = ({ party, selectCharacter }) => {
 
     return (
         <Row>
-            {/* {
+            {
                 party.map((C, i) => {
                     return (
                         <CharacterTile
                             key={`tile ${i}`}
-                            image={C.img()}
                             partyId={i}
-                            updateActiveChar={updateActiveChar}
+                            character={C}
+                            selectCharacter={selectCharacter}
                         />
                     )
                 })
-            } */}
+            }
         </Row>
     )
 };
 
-export default EnemyParty;
+export default Party;

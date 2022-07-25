@@ -22,21 +22,20 @@ const CharacterInfo = ({ character }) => {
                 <Row>
                     <Col>
                         <Row>
+                            <Col>
+                                <p>Health</p>
+                            </Col>
+                        </Row>
+                        <Row>
                             {
                                 health.map((square, i) => {
                                     return (
-                                        <Col key={`health ${i}`}>
+                                        <Col xs={1} key={`health ${i}`}>
                                             .
-                                            {/* {square} */}
                                         </Col>
                                     )
                                 })
                             }
-                        </Row>
-                        <Row>
-                            <Col>
-                                <p>Health</p>
-                            </Col>
                         </Row>
                     </Col>
                     <Col>
@@ -53,21 +52,20 @@ const CharacterInfo = ({ character }) => {
                 <Row>
                     <Col>
                         <Row>
+                            <Col>
+                                <p>Special</p>
+                            </Col>
+                        </Row>
+                        <Row>
                             {
                                 special.map((square, i) => {
                                     return (
                                         <Col key={`special ${i}`}>
                                             .
-                                            {/* {square} */}
                                         </Col>
                                     )
                                 })
                             }
-                        </Row>
-                        <Row>
-                            <Col>
-                                <p>Special</p>
-                            </Col>
                         </Row>
                     </Col>
                     <Col>

@@ -3,40 +3,38 @@ import { Row, Col } from "react-bootstrap";
 import CharacterImg from "../CharacterImg";
 // import './style.css'
 
-const CharacterTile = ({ image, partyId, health, special, updateActiveChar }) => {
+const CharacterTile = ({ partyId, character, selectCharacter }) => {
+
+    const {img, health, special} = character
 
     // const handleClick = () => {
     //     ;
     // };
 
     return (
-        <Col onClick={() => updateActiveChar(partyId)}>
+        <Col onClick={() => selectCharacter(partyId)}>
             <Row>
                 <Col>
-                    <CharacterImg image={image} classId={'tileImg'} />
+                    <CharacterImg image={img()} classId={'tileImg'} />
                 </Col>
             </Row>
             <Row>
-                <Col>
-                    {
-                        health.map((square, i) => {
-                            return (
-                                <>.</>
-                            )
-                        })
-                    }
-                </Col>
+                {
+                    health.map((square, i) => {
+                        return (
+                            <Col key={`health: ${i}`}>.</Col>
+                        )
+                    })
+                }
             </Row>
             <Row>
-                <Col>
-                    {
-                        special.map((square, i) => {
-                            return (
-                                <>.</>
-                            )
-                        })
-                    }
-                </Col>
+                {
+                    special.map((square, i) => {
+                        return (
+                            <Col key={`special: ${i}`}>.</Col>
+                        )
+                    })
+                }
             </Row>
         </Col >
     )

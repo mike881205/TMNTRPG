@@ -1,22 +1,21 @@
 import { React } from "react";
 import { Row, Col } from "react-bootstrap";
 import CharacterTile from "../CharacterTiles";
-import EnemyParty from "../EnemyParty";
-import HeroParty from "../HeroParty";
+import Party from "../Party";
 // import './style.css'
 
-const Battlefield = ({ partys, updateActiveChar }) => {
+const Battlefield = ({ partys, selectCharacter }) => {
 
     return (
         <Row>
             <Col style={{ border: '1px solid black' }}>
-                <EnemyParty
+                <Party
                     party={partys.enemy}
-                    updateActiveChar={updateActiveChar}
+                    selectCharacter={selectCharacter}
                 />
-                <HeroParty
+                <Party
                     party={partys.hero}
-                    updateActiveChar={updateActiveChar}
+                    selectCharacter={selectCharacter}
                 />
             </Col>
         </Row>

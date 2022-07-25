@@ -17,17 +17,17 @@ const App = () => {
     const Characters = {...characters};
     const hero = Characters.heroes[id];
 
-    Characters.heroes.forEach(H => P.push(H))
+    // Characters.heroes.forEach(H => P.push(H))
 
-    // if (P.length === 0) hero.selected = true;
+    if (P.length === 0) hero.selected = true;
 
-    // P.push(hero);
+    P.push(hero);
 
-    // Characters.heroes = Characters.heroes.filter((C, i) => {
-    //   return i !== id;
-    // });
+    Characters.heroes = Characters.heroes.filter((C, i) => {
+      return i !== id;
+    });
 
-    // setCharacters(Characters);
+    setCharacters(Characters);
     setpartys(prtys);
   };
 
@@ -35,7 +35,7 @@ const App = () => {
     setGameState(game_state);
   };
 
-  const updateActiveChar = id => {
+  const selectCharacter = id => {
 
     const prtys = {...partys};
     const P = prtys.hero;
@@ -82,7 +82,7 @@ const App = () => {
                 partys={partys}
                 addToParty={addToParty}
                 changeGameState={changeGameState}
-                updateActiveChar={updateActiveChar}
+                selectCharacter={selectCharacter}
               />
               :
               <></>
